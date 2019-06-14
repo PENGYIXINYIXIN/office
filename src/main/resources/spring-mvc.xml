@@ -76,28 +76,28 @@
     </bean>
 
 
-    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <!--&lt;!&ndash; 保证实现了Shiro内部lifecycle函数的bean执行 &ndash;&gt;-->
+    <!--<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>-->
 
-    <!-- 生成代理，通过代理进行控制 -->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
-    <!-- 开启Shiro注解,必须放在springmvc的配置文件中 -->
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
-    </bean>
+    <!--&lt;!&ndash; 生成代理，通过代理进行控制 &ndash;&gt;-->
+    <!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>-->
+    <!--&lt;!&ndash; 开启Shiro注解,必须放在springmvc的配置文件中 &ndash;&gt;-->
+    <!--<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">-->
+        <!--<property name="securityManager" ref="securityManager"/>-->
+    <!--</bean>-->
 
-    <!-- 注解方式下的异常处理，身份认证异常处理、权限认证异常处理 -->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <!--登录异常，跳转到login.jsp-->
-                <prop key="org.apache.shiro.authz.UnauthenticatedException">
-                    /login
-                </prop>
-                <!-- 授权异常，跳转到unauthorized.jsp -->
-                <prop key="org.apache.shiro.authz.UnauthorizedException">unauthorized</prop>
-            </props>
-        </property>
-    </bean>
+    <!--&lt;!&ndash; 注解方式下的异常处理，身份认证异常处理、权限认证异常处理 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--&lt;!&ndash;登录异常，跳转到login.jsp&ndash;&gt;-->
+                <!--<prop key="org.apache.shiro.authz.UnauthenticatedException">-->
+                    <!--/login-->
+                <!--</prop>-->
+                <!--&lt;!&ndash; 授权异常，跳转到unauthorized.jsp &ndash;&gt;-->
+                <!--<prop key="org.apache.shiro.authz.UnauthorizedException">unauthorized</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>

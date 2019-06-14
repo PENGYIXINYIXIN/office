@@ -105,88 +105,88 @@
 	<!-- 自定义Realm -->
 	<!--<bean id="myRealm" class="com.qfedu.realm.MyRealm"/>-->
 	<!-- 安全管理器 -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<!--<property name="realm" ref="myRealm"/>-->
-		<property name="cacheManager" ref="cacheManager" />
-		<property name="rememberMeManager" ref="rememberMeManager" />
-	</bean>
+	<!--<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+		<!--&lt;!&ndash;<property name="realm" ref="myRealm"/>&ndash;&gt;-->
+		<!--<property name="cacheManager" ref="cacheManager" />-->
+		<!--<property name="rememberMeManager" ref="rememberMeManager" />-->
+	<!--</bean>-->
 
-	<!-- 缓存管理器 使用Ehcache实现 -->
-	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
-	</bean>
+	<!--&lt;!&ndash; 缓存管理器 使用Ehcache实现 &ndash;&gt;-->
+	<!--<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">-->
+		<!--<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />-->
+	<!--</bean>-->
 
-	<!-- remenberMe配置 -->
-	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-		<constructor-arg value="rememberMe" />
-		<!-- 是否只能通过http协议获取cookie数据（如果是false，即可以通过http也可以通过js获取cookie数据） -->
-		<property name="httpOnly" value="true" />
-		<!-- 默认记住7天（单位：秒） -->
-		<property name="maxAge" value="604800" />
-	</bean>
-	<!-- rememberMe管理器 -->
-	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
-		<property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}" />
-		<property name="cookie" ref="rememberMeCookie" />
-	</bean>
+	<!--&lt;!&ndash; remenberMe配置 &ndash;&gt;-->
+	<!--<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">-->
+		<!--<constructor-arg value="rememberMe" />-->
+		<!--&lt;!&ndash; 是否只能通过http协议获取cookie数据（如果是false，即可以通过http也可以通过js获取cookie数据） &ndash;&gt;-->
+		<!--<property name="httpOnly" value="true" />-->
+		<!--&lt;!&ndash; 默认记住7天（单位：秒） &ndash;&gt;-->
+		<!--<property name="maxAge" value="604800" />-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; rememberMe管理器 &ndash;&gt;-->
+	<!--<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">-->
+		<!--<property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}" />-->
+		<!--<property name="cookie" ref="rememberMeCookie" />-->
+	<!--</bean>-->
 
-	<!-- Shiro过滤器 -->
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<!-- Shiro的核心安全接口,这个属性是必须的 -->
-		<property name="securityManager" ref="securityManager"/>
-		<!-- 未登陆时，访问需要认证的资源，则跳转到登录页面的配置 -->
-		<property name="loginUrl" value="/login.html"/>
-		<!-- 权限认证失败，则跳转到指定页面 -->
-		<!--<property name="unauthorizedUrl" value="/unauthorized.jsp"/>-->
-		<!--  设置自定义的filter -->
-		<property name="filters">
-			<map>
-				<!--  注意key的值 -->
-				<entry key="perms" value-ref="myPermFilter" />
-			</map>
-		</property>
-		<!-- Shiro连接约束配置,即过滤链的定义 -->
-		<property name="filterChainDefinitions">
-			<value>
-				<!--  anon 匿名访问 -->
-				/login.do=anon
-				/login.jsp=anon
+	<!--&lt;!&ndash; Shiro过滤器 &ndash;&gt;-->
+	<!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+		<!--&lt;!&ndash; Shiro的核心安全接口,这个属性是必须的 &ndash;&gt;-->
+		<!--<property name="securityManager" ref="securityManager"/>-->
+		<!--&lt;!&ndash; 未登陆时，访问需要认证的资源，则跳转到登录页面的配置 &ndash;&gt;-->
+		<!--<property name="loginUrl" value="/login.html"/>-->
+		<!--&lt;!&ndash; 权限认证失败，则跳转到指定页面 &ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="unauthorizedUrl" value="/unauthorized.jsp"/>&ndash;&gt;-->
+		<!--&lt;!&ndash;  设置自定义的filter &ndash;&gt;-->
+		<!--<property name="filters">-->
+			<!--<map>-->
+				<!--&lt;!&ndash;  注意key的值 &ndash;&gt;-->
+				<!--<entry key="perms" value-ref="myPermFilter" />-->
+			<!--</map>-->
+		<!--</property>-->
+		<!--&lt;!&ndash; Shiro连接约束配置,即过滤链的定义 &ndash;&gt;-->
+		<!--<property name="filterChainDefinitions">-->
+			<!--<value>-->
+				<!--&lt;!&ndash;  anon 匿名访问 &ndash;&gt;-->
+				<!--/login.do=anon-->
+				<!--/login.jsp=anon-->
 
-				<!-- 配置退出的操作 -->
-				/logout.do = logout
+				<!--&lt;!&ndash; 配置退出的操作 &ndash;&gt;-->
+				<!--/logout.do = logout-->
 
-				<!-- 配置权限 -->
-				<!--/test.do=perms["user:list"]-->
-				<!--/test2.do=perms["user:ddd"]-->
+				<!--&lt;!&ndash; 配置权限 &ndash;&gt;-->
+				<!--&lt;!&ndash;/test.do=perms["user:list"]&ndash;&gt;-->
+				<!--&lt;!&ndash;/test2.do=perms["user:ddd"]&ndash;&gt;-->
 
-				<!--  authc 经过身份认证后才能访问
-					放在最后，否则权限认证部分的配置失效
-				-->
-				<!--/**=authc-->
-				<!-- 使用rememberMe功能时，需要使用user过滤器，包含认证和rememberMe功能 -->
-				/**=user
-				<!--  /login=anon
-                 /user/admin*=authc
-                 /user/student*/**=roles[teacher]
-                 /user/teacher*/**=perms["user:create"]
-				/user/login.do=anon
-				 user下的所有内容都需要身份认证
-					/user/*=authc
-				-->
+				<!--&lt;!&ndash;  authc 经过身份认证后才能访问-->
+					<!--放在最后，否则权限认证部分的配置失效-->
+				<!--&ndash;&gt;-->
+				<!--&lt;!&ndash;/**=authc&ndash;&gt;-->
+				<!--&lt;!&ndash; 使用rememberMe功能时，需要使用user过滤器，包含认证和rememberMe功能 &ndash;&gt;-->
+				<!--/**=user-->
+				<!--&lt;!&ndash;  /login=anon-->
+                 <!--/user/admin*=authc-->
+                 <!--/user/student*/**=roles[teacher]-->
+                 <!--/user/teacher*/**=perms["user:create"]-->
+				<!--/user/login.do=anon-->
+				 <!--user下的所有内容都需要身份认证-->
+					<!--/user/*=authc-->
+				<!--&ndash;&gt;-->
 
-			</value>
-		</property>
-	</bean>
+			<!--</value>-->
+		<!--</property>-->
+	<!--</bean>-->
 
-	<!-- 手动创建logoutFIleter的对象，主要目的：指定退出后需要跳转的资源
-	 	id 的值可以随便写，但是一般还是写为logout
-	 -->
-	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
-		<property name="redirectUrl" value="/login.html" />
-	</bean>
+	<!--&lt;!&ndash; 手动创建logoutFIleter的对象，主要目的：指定退出后需要跳转的资源-->
+	 	<!--id 的值可以随便写，但是一般还是写为logout-->
+	 <!--&ndash;&gt;-->
+	<!--<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">-->
+		<!--<property name="redirectUrl" value="/login.html" />-->
+	<!--</bean>-->
 
-	<!--  创建自定义的授权处理的对象 -->
-	<bean id="myPermFilter" class="com.qfedu.realm.MyPermFitler"></bean>
+	<!--&lt;!&ndash;  创建自定义的授权处理的对象 &ndash;&gt;-->
+	<!--<bean id="myPermFilter" class="com.qfedu.realm.MyPermFitler"></bean>-->
 
         
 </beans>
