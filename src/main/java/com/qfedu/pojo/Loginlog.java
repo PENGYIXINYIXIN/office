@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Created by PENGYIXIN on 2019/6/14.
+ * 登录日志
  */
 public class Loginlog {
     private Integer id ;
@@ -50,5 +51,17 @@ public class Loginlog {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Loginlog{" +
+                "id=" + id +
+                ", ip='" + ip + '\'' +
+                ", no='" + no + '\'' +
+                ", createtime=" + createtime +
+                ", location='" + location + '\'' +
+                '}';
     }
 }

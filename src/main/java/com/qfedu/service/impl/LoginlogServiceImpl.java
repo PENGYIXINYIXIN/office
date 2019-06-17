@@ -7,6 +7,7 @@ import com.qfedu.pojo.Loginlog;
 import com.qfedu.service.LoginlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.Map;
  * Created by PENGYIXIN on 2019/6/14.
  */
 
-@Component
+@Service
 public class LoginlogServiceImpl implements LoginlogService {
 
     @Autowired
@@ -35,7 +36,7 @@ public class LoginlogServiceImpl implements LoginlogService {
         map.put("code",0);
         map.put("msg","");
         map.put("count",total);
-        map.put("loginlogList",loginlogList);
+        map.put("data",loginlogList);
         return map;
     }
 }
