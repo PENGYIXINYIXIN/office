@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qfedu.dao.StudentsDao">
+    <resultMap id="studentMap" type="com.qfedu.pojo.Students">
+        <id property="no" column="no"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="cardno" column="cardno"></result>
+        <result property="school" column="school"></result>
+        <result property="education" column="education"></result>
+        <result property="gid" column="gid"></result>
+        <result property="flag" column="flag"></result>
+        <result property="email" column="email"></result>
+        <result property="qq" column="qq"></result>
+        <result property="phone" column="phone"></result>
+        <result property="introno" column="introno"></result>
+        <result property="createdate" column="createdate"></result>
+        <result property="phone" column="phone"></result>
+        <association property="grade" resultMap="gradeMap"></association>
+    </resultMap>
+
+    <resultMap id="gradeMap" type="com.qfedu.pojo.Grade">
+        <id column="id" property="id"></id>
+        <result property="name" column="gname"></result>
+    </resultMap>
+
+
+
+    <select id="findAllStu" resultMap="studentMap">
+        SELECT s.* ,g.name as gname from t_student s INNER JOIN t_grade g
+        where s.gid = g.id  GROUP BY createdate DESC
+    </select>
+
+    <insert id="addStudent" parameterType="com.qfedu.pojo.Students">
+        INSERT  into t_students VALUES
+        (#{no}, #{name}, #{sex}, #{birthday}, #{cardno}, #{school}, #{education}, #{gid},
+        #{flag}, #{email}, #{qq}, #{phone}, #{introno}, #{createdate},#{photo}
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.GradeDao">
+    <resultMap id="gradeMap" type="com.qfedu.pojo.Grade">
+        <id column="id" property="id"></id>
+        <result property="name" column="name"></result>
+        <result property="flag" column="flag"></result>
+        <result property="week" column="week"></result>
+        <result property="createdate" column="craetedate"></result>
+        <result property="location" column="location"></result>
+        <result property="cid" column="cid"></result>
+    </resultMap>
+
+    <select id="findGrade" resultMap="gradeMap">
+        SELECT name from t_grade
+    </select>
+    
+
+</mapper>
+
