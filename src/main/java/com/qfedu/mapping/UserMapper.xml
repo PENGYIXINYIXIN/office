@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qfedu.dao.UserDao">
+     <resultMap id="menuMap" type="com.qfedu.pojo.UserMenu">
+		 <id column="id" property="id"></id>
+		 <result property="aurl" column="aurl"></result>
+		 <result property="icon" column="aicon"></result>
+		 <result column="title" property="title"></result>
+		 <collection property="childs" javaType="java.util.ArrayList" ofType="com.qfedu.pojo.UserMenu">
+			 <id column="cid" property="id"></id>
+			 <result property="aurl" column="caurl"></result>
+			 <result column="ctitle" property="title"></result>
+			 <result property="icon" column="caicon"></result>
+		 </collection>
+	 </resultMap>
+
+
+	<select id="findByName" parameterType="string" resultType="user">
+
+		select * from t_user where no=#{no}
+	</select>
+
+   <select id="findRolesByName" parameterType="String" resultType="String">
+         select r.info from t_role r inner join t_userrole ur on r.id=ur.rid inner join t_user u on u.id=ur.uid where u.no=#{name};
+   </select>
+	<select id="findAuthorityByName" parameterType="String" resultType="String">
+       select a.aurl from t_authority a inner join t_roleauthority ra on a.id=ra.aid inner join t_role r on ra.rid=r.id inner join t_userrole ur on r.id=ur.rid inner join t_user u on u.id=ur.uid where u.no=#{name};
+	</select>
+	<select id="findMenu" parameterType="String" resultMap="menuMap">
+		select a.aicon,a.id,a.aurl,a.title,c.aicon caicon,c.id cid,c.aurl caurl,c.title ctitle from t_authority a inner join t_authority c on a.id=c
+.parentId inner join t_roleauthority ra on a.id=ra.aid inner join t_role r on ra.rid=r.id inner join t_userrole ur on r.id=ur.rid inner join t_user u on u.id=ur.uid where u.no=#{no};
+	</select>
+</mapper>

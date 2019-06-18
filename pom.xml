@@ -215,18 +215,18 @@
         </resources>
         <plugins>
             <!-- tomcat插件 -->
-           <!-- <plugin>
+            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
-                <configuration>-->
+                <configuration>
 
                     <!-- 针对tomcat7插件，解决get提交方式的中文乱码 -->
-                    <!--<uriEncoding>UTF-8</uriEncoding>
+                    <uriEncoding>UTF-8</uriEncoding>
                     <path>/empsys</path>
                 </configuration>
             </plugin>
--->
+
             <!-- maven中用到的编译插件，指定编译时使用的jdk的版本 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
