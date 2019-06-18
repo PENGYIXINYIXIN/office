@@ -10,7 +10,7 @@ public class Students {
     private  String no;
     private  String name;
     private  String sex;
-    private Date birthday;
+    private String birthday;
     private String cardno;
     private String school;
     private String education;
@@ -57,11 +57,11 @@ public class Students {
         this.sex = sex;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

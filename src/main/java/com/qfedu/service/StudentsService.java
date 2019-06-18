@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.qfedu.pojo.Students;
 import com.qfedu.vo.JsonBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,5 +13,9 @@ import java.util.Map;
 public interface StudentsService {
    public Map<String,Object>  findStuAll(Integer page, Integer limit);
 
-  JsonBean addStudent(Students students);
+  public void  addStudent(Students students);
+
+    void delectByNo(String no);
+
+    void addstudent(List<Students> studentsList);
 }

@@ -43,18 +43,21 @@ public class StudentsServiceImpl implements StudentsService {
     }
 
     @Override
-    public JsonBean addStudent(Students students) {
-        String no = students.getNo();
-        int i = studentsDao.selectByNo(no);
-        if(i==0){
-            return new JsonBean(0,"该学生已经存在");
-        }else{
-            studentsDao.addStudent(students);
-            return new JsonBean(1,null);
-        }
+    public void addStudent(Students students) {
+        students.setFlag(1);
+        studentsDao.addStudent(students);
+    }
+
+    @Override
+    public void delectByNo(String no) {
+        studentsDao.delectByNo(no);
 
     }
 
+    @Override
+    public void addstudent(List<Students> studentsList) {
+        studentsDao.addBatchStudent(studentsList);
+    }
 
 
 }

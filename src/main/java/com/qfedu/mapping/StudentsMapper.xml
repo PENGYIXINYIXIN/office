@@ -30,14 +30,23 @@
 
     <select id="findAllStu" resultMap="studentMap">
         SELECT s.* ,g.name as gname from t_student s INNER JOIN t_grade g
-        where s.gid = g.id  GROUP BY createdate DESC
+        where s.gid = g.id
     </select>
 
     <insert id="addStudent" parameterType="com.qfedu.pojo.Students">
-        INSERT  into t_students VALUES
-        (#{no}, #{name}, #{sex}, #{birthday}, #{cardno}, #{school}, #{education}, #{gid},
-        #{flag}, #{email}, #{qq}, #{phone}, #{introno}, #{createdate},#{photo}
+        insert into t_student(no,name,sex,birthday,cardno,school,education,gid,flag,email,qq,phone,introno,createdate) values(#{no},#{name},#{sex},#{birthday},#{cardno},#{school},#{education},#{gid},#{flag},#{email},#{qq},#{phone},#{introno},#{createdate})
     </insert>
 
+    <delete id="delectByNo" parameterType="string">
+        DELETE  from t_student  where no = #{no}
+    </delete>
+
+    <!-- 批量插入-->
+    <insert id="addBatchStudent" parameterType="list">
+        insert into t_student(no,name,sex,birthday,cardno,school,education,gid,flag,email,qq,phone,introno,createdate) values
+        <foreach collection="list" item="stu" separator=",">
+        (#{stu.no},#{stu.name},#{stu.sex},#{stu.birthday},#{stu.cardno},#{stu.school},#{stu.education},#{stu.gid},#{stu.flag},#{stu.email},#{stu.qq},#{stu.phone},#{stu.introno},#{stu.createdate})
+        </foreach>
+    </insert>
 
 </mapper>
