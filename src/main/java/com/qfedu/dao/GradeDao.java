@@ -10,4 +10,6 @@ import java.util.List;
 public interface GradeDao {
 
     List<Grade> findGrade();
+
+
 }

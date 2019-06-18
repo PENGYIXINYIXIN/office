@@ -12,9 +12,10 @@
     </resultMap>
 
     <select id="findGrade" resultMap="gradeMap">
-        SELECT id,name from t_grade
+        SELECT * from t_grade
     </select>
-    
+
+
 
 </mapper>
 

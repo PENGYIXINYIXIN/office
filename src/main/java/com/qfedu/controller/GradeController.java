@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by PENGYIXIN on 2019/6/15.
@@ -28,6 +29,13 @@ public class GradeController {
         List<Grade> arr = gradeService.findGrade();
         System.out.println("查询达到的班级为"+arr);
         return arr;
+    }
+
+
+    @RequestMapping("/gradepage.do")
+    public Map<String,Object> findAllGrade(Integer page, Integer limit){
+        Map<String, Object> map = gradeService.findGradePage(page,limit);
+        return map;
     }
 
 }

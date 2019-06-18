@@ -3,6 +3,7 @@ package com.qfedu.service;
 import com.qfedu.pojo.Grade;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -11,4 +12,6 @@ import java.util.List;
 public interface  GradeService {
 
     List<Grade> findGrade();
+
+    Map<String,Object> findGradePage(Integer page, Integer limit);
 }
