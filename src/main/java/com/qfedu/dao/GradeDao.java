@@ -12,4 +12,9 @@ public interface GradeDao {
     List<Grade> findGrade();
 
 
+    void delectById(Integer id);
+
+    void updateById(Grade grade);
+
+    void addGrade(Grade grade);
 }

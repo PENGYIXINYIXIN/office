@@ -10,6 +10,7 @@ import com.qfedu.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,5 +45,22 @@ public class GradeServiceImpl implements GradeService {
         map.put("count",total);
         map.put("data",gradeList);
         return map;
+    }
+
+    @Override
+    public void delectById(Integer id) {
+        gradeDao.delectById(id);
+    }
+
+    @Override
+    public void update(Grade grade) {
+        gradeDao.updateById(grade);
+    }
+
+    @Override
+    public void addGrade(Grade grade) {
+        grade.setFlag(1);
+
+        gradeDao.addGrade(grade);
     }
 }

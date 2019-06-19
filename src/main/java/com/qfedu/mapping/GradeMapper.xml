@@ -6,16 +6,37 @@
         <result property="name" column="name"></result>
         <result property="flag" column="flag"></result>
         <result property="week" column="week"></result>
-        <result property="createdate" column="craetedate"></result>
+        <result property="createdate" column="createdate"></result>
         <result property="location" column="location"></result>
         <result property="cid" column="cid"></result>
+        <result property="count" column="count"></result>
+        <association property="course" resultMap="course"></association>
+    </resultMap>
+    <resultMap id="course" type="com.qfedu.pojo.Course">
+        <id property="id" column="id"></id>
+        <result property="name" column="cname"></result>
     </resultMap>
 
+
     <select id="findGrade" resultMap="gradeMap">
-        SELECT * from t_grade
+
+ select c.name as cname,g.id ,g.name,g.flag as gflag,g.week ,g.createdate ,g.location,g.cid,s.*
+  from (t_grade g left join (select gid,count(*) as count from t_student group by gid) s
+ on g.id = s.gid) LEFT JOIN t_course c on g.cid = c.id
     </select>
 
+    <delete id="delectById" parameterType="int">
+        DELETE  from t_grade where id = #{id}
+    </delete>
 
 
+
+    <insert id="addGrade" parameterType="com.qfedu.pojo.Grade">
+        INSERT  into t_grade (name,flag, week ,createdate,location,cid) VALUES(#{name},#{flag},#{week},#{createdate},#{location},#{cid})
+    </insert>
+
+    <update id="updateById" parameterType="com.qfedu.pojo.Grade">
+       update t_grade set name = #{name},week = #{week},location = #{location} where id = #{id}
+    </update>
 </mapper>
 
