@@ -37,7 +37,7 @@ function showData(obj) {
 	$("#f2").val(obj.name);
 	$("#f3").val(obj.createdate);
 	$("#f4").val(obj.week);
-	$("#f5").val(obj.type);
+	$("#f5").val(obj.typename);
 }
 </script>
 </head>
@@ -76,12 +76,15 @@ function showData(obj) {
 			<div class="layui-form-item">
 				<label class="layui-form-label">学科类型</label>
 				<div class="layui-input-block">
-					<input type="text" name="location" id="f5" lay-verify="name" autocomplete="off"
-						class="layui-input">
+					<select name="type">
+						<option value="1">普通</option>
+						<option value="2">精品</option>
+						<option value="3">业余</option>
+					</select>
 				</div>
 			</div>
-			
-		
+
+
 			<div class="layui-form-item">
 				<input class="layui-btn"  style="margin-left: 10%"  type="submit" value="确认修改">
 			</div>

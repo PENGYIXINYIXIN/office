@@ -9,7 +9,7 @@ public class Course {
     private  Integer flag;
     private  Integer week;
     private  String createdate;
-    private  int type;
+    private  Integer type;
 
     public Integer getId() {
         return id;
@@ -51,13 +51,14 @@ public class Course {
         this.createdate = createdate;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
+
 
     @Override
     public String toString() {
@@ -70,4 +71,6 @@ public class Course {
                 ", type=" + type +
                 '}';
     }
+
+
 }

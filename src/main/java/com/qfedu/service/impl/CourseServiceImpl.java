@@ -8,6 +8,7 @@ import com.qfedu.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +30,30 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Map<String, Object> findByPage(Integer page, Integer limit) {
         PageHelper.startPage(page,limit);
-        List<Course> courseList = courseDao.findcourse();
+        List<Course> courseList = courseDao.findByPage();
         int pages = ((Page) courseList).getPages();
-        return null;
+        long total = ((Page) courseList).getTotal();
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",total);
+        map.put("data",courseList);
+        return map;
+
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        courseDao.deleteById(id);
+    }
+
+    @Override
+    public void updateById(Course course) {
+        courseDao.updateById(course);
+    }
+
+    @Override
+    public void addCourse(Course course) {
+        courseDao.addCourse(course);
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.qfedu.dao.StudentsDao">
-    <resultMap id="studentMap" type="com.qfedu.pojo.Students">
+    <resultMap id="studentMap" type="com.qfedu.vo.StudentsVo">
         <id property="no" column="no"></id>
         <result property="name" column="name"></result>
         <result property="sex" column="sex"></result>
@@ -18,13 +18,10 @@
         <result property="introno" column="introno"></result>
         <result property="createdate" column="createdate"></result>
         <result property="phone" column="phone"></result>
-        <association property="grade" resultMap="gradeMap1"></association>
+        <result property="gname" column="gname"></result>
     </resultMap>
 
-    <resultMap id="gradeMap1" type="com.qfedu.pojo.Grade">
-        <id column="id" property="id"></id>
-        <result property="name" column="gname"></result>
-    </resultMap>
+
 
 
     <select id="findAllStu" resultMap="studentMap">

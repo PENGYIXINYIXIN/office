@@ -13,4 +13,10 @@ public interface CourseService {
     List<Course> findcourse();
 
     Map<String,Object> findByPage(Integer page, Integer limit);
+
+    void deleteById(Integer id);
+
+    void updateById(Course course);
+
+    void addCourse(Course course);
 }

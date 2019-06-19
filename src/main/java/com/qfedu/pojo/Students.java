@@ -22,16 +22,10 @@ public class Students {
     private String introno;
     private String  createdate;
     private String photo;
-    private Grade grade;
-    private  String gname;
 
-    public String getGname() {
-        return grade.getName();
-    }
 
-    public void setGname(String gname) {
-        this.gname = gname;
-    }
+
+
 
     public String getNo() {
         return no;
@@ -154,13 +148,6 @@ public class Students {
         this.photo = photo;
     }
 
-    public Grade getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Grade grade) {
-        this.grade = grade;
-    }
 
     @Override
     public String toString() {
@@ -168,7 +155,7 @@ public class Students {
                 "no='" + no + '\'' +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
-                ", birthday=" + birthday +
+                ", birthday='" + birthday + '\'' +
                 ", cardno='" + cardno + '\'' +
                 ", school='" + school + '\'' +
                 ", education='" + education + '\'' +
@@ -180,7 +167,6 @@ public class Students {
                 ", introno='" + introno + '\'' +
                 ", createdate='" + createdate + '\'' +
                 ", photo='" + photo + '\'' +
-                ", grade=" + grade +
                 '}';
     }
 }

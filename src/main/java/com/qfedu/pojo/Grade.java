@@ -14,9 +14,8 @@ public class Grade {
     private String  createdate;
     private String location;
     private Integer cid;
-    private  Course course;
 
-    private Integer count;
+
 
     public Integer getId() {
 
@@ -75,21 +74,6 @@ public class Grade {
         this.cid = cid;
     }
 
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
-    }
 
     @Override
     public String toString() {
@@ -101,8 +85,6 @@ public class Grade {
                 ", createdate='" + createdate + '\'' +
                 ", location='" + location + '\'' +
                 ", cid=" + cid +
-                ", course=" + course +
-                ", count=" + count +
                 '}';
     }
 }

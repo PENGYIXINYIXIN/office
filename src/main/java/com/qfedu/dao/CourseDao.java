@@ -13,4 +13,10 @@ public interface CourseDao {
      List<Course> findcourse();
 
      List<Course> findByPage();
+
+     void deleteById(Integer id);
+
+     void updateById(Course course);
+
+     void addCourse(Course course);
 }
