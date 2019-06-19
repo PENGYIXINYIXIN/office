@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qfedu.dao.RoleDao">
+
+<select id="findRole" resultType="com.qfedu.pojo.Role">
+	select id,info from t_role
+</select>
+	<select id="findRids" parameterType="Integer" resultType="String">
+		select ur.rid from t_user u inner join t_userrole ur on u.id=ur.uid where u.id=#{id}
+	</select>
+
+<delete id="deleteRole" parameterType="String" >
+	DELETE from t_userrole where uid=#{id}
+</delete>
+
+	<insert id="insertRole" parameterType="java.util.Map">
+		INSERT into t_userrole VALUES (#{uid},#{rid})
+	</insert>
+</mapper>
