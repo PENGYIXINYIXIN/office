@@ -70,8 +70,19 @@
             , page: false //关闭分页
             , cols: [[ //表头
                 {field: 'id', title: '序号', sort: true, fixed: 'left'}
-                , {field: 'name', title: '角色名称'}
-                , {field: 'info', title: '角色备注'}
+                , {field: 'title', title: '名称'}
+                , {field: 'aurl', title: '页面路径'}
+                , {field: 'aicon', title: '图标',templet:function (obj) {
+                    var r;
+                    r="<i class=\"fa "+obj.icon+"\"></i>"
+                }}
+                , {field: 'parentId', title: '级别',templet:function (obj) {
+                         if(obj.parentId!=0){
+                             return "二级图标";
+                         }else{
+                             return "一级图标";
+                         }
+                        }}
                 , {field: 'right', title: '操作', toolbar: "#barop"}
             ]]
         });
