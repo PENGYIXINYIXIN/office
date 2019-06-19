@@ -19,4 +19,12 @@ public interface UserDao {
     //查找菜单
     List<UserMenu> findMenu(String no);
 
+
+    List<User> findAll();
+
+    List<User> findMapByUser(User user);
+
+    void deleteUser(Integer id);
+
+    void deleteUserRole(Integer id);
 }
