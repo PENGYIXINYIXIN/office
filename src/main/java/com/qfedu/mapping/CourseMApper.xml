@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.CourseDao">
+    <resultMap id="courseMap" type="com.qfedu.pojo.Course">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="flag" column="flag"></result>
+        <result property="week" column="week"></result>
+        <result property="createdate" column="createdate"></result>
+        <result property="type" column="type"></result>
+    </resultMap>
+
+    <!-- 添加班级时所属学科下拉框-->
+    <select id="findcourse" resultMap="courseMap">
+        SELECT  * from t_course
+    </select>
+</mapper>

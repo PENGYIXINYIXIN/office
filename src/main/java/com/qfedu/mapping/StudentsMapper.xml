@@ -18,14 +18,13 @@
         <result property="introno" column="introno"></result>
         <result property="createdate" column="createdate"></result>
         <result property="phone" column="phone"></result>
-        <association property="grade" resultMap="gradeMap"></association>
+        <association property="grade" resultMap="gradeMap1"></association>
     </resultMap>
 
-    <resultMap id="gradeMap" type="com.qfedu.pojo.Grade">
+    <resultMap id="gradeMap1" type="com.qfedu.pojo.Grade">
         <id column="id" property="id"></id>
         <result property="name" column="gname"></result>
     </resultMap>
-
 
 
     <select id="findAllStu" resultMap="studentMap">
@@ -45,7 +44,7 @@
     <insert id="addBatchStudent" parameterType="list">
         insert into t_student(no,name,sex,birthday,cardno,school,education,gid,flag,email,qq,phone,introno,createdate) values
         <foreach collection="list" item="stu" separator=",">
-        (#{stu.no},#{stu.name},#{stu.sex},#{stu.birthday},#{stu.cardno},#{stu.school},#{stu.education},#{stu.gid},#{stu.flag},#{stu.email},#{stu.qq},#{stu.phone},#{stu.introno},#{stu.createdate})
+        (#{stu.no},#{stu.name},#{stu.sex},#{stu.birthday},#{stu.cardno},#{stu.school},#{stu.education},#{stu.gid},#{stu.flag},#{stu.email},#{stu.             qq},#{stu.phone},#{stu.introno},#{stu.createdate})
         </foreach>
     </insert>
 
