@@ -10,4 +10,10 @@ import java.util.Map;
  */
 public interface AuthorityService {
     Map<String,Object> selectAtr(Integer page, Integer limit);
+
+    void addAuthority(Authority atr);
+
+    List<Authority> getParentroot();
+
+    void authoritydelete(Integer id);
 }

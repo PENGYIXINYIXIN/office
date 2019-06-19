@@ -62,11 +62,11 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除权限?', function(index){
 		                $.ajax({
-		                    url: "coursedelete.do",
+		                    url: "authoritydelete.do",
 		                    type: "POST",
 		                    data:"id="+data.id,
 		                    success: function(data){
-		                        if(data.code==1000){
+		                        if(data.code==1){
 		                            obj.del();//删除表格中的对应行数据
 		                            layer.close(index);
 		                            layer.msg("删除成功", {icon: 6});
@@ -96,7 +96,7 @@
 					method:"post",
                     data: $("#fm1").serialize(),
                     success: function (obj) {
-                        if (obj.code == 1000) {
+                        if (obj.code == 1) {
                             layer.msg("新增权限成功");
                             searchData();
                         } else {
@@ -110,6 +110,7 @@
         });
     }
     function changePid(i) {
+		alert(i);
 		if(i==-1){
             $.get("authorityroot.do",null,function (arr) {
 				for(i=0;i<arr.length;i++){
@@ -120,11 +121,13 @@
             });
 		}else{
             $("#dvl1").css("display","none");
-		    $("#pid").val(i);
+
+		    $("#pid1").val(i);
+
 		}
     }
     function setPid(obj) {
-        $("#pid").val(obj.value());
+        $("#pid1").val(obj.value());
     }
 </script>
 </body>
@@ -155,12 +158,12 @@
 				<input type="radio" name="pid" value="-1" lay-filter="level"   title="二级" >
 			</div>
 		</div>
-		<input type="hidden" name="parentId" id="pid">
+		<!--<input type="hidden" name="parentId" id="pid1">-->
 		<div class="layui-form-item" id="dvl1" style="display: none" >
 			<label class="layui-form-label">上级路径：</label>
 			<div class="layui-input-inline">
-				<select onselect="setPid(this)" id="spid" >
-
+				<select  name="parentId" onselect="setPid(this)" id="spid" >
+                    <option value="0"></option>
 				</select>
 
 			</div>

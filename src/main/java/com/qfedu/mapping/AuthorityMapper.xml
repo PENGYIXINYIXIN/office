@@ -9,4 +9,16 @@
 		select * from t_authority
 	</select>
 
+	<insert id="addAuthority" parameterType="com.qfedu.pojo.Authority">
+		INSERT into t_authority VALUES (null,#{aicon},#{aurl},#{parentId},#{title},null)
+	</insert>
+	<select id="getParentroot" resultType="com.qfedu.pojo.Authority">
+		select id,title from t_authority where parentId=0
+	</select>
+	<delete id="authoritydelete1" parameterType="Integer">
+		delete from t_authority where id=#{id}
+	</delete>
+	<delete id="authoritydelete2" parameterType="Integer">
+		delete from t_roleauthority where aid=#{id}
+	</delete>
 </mapper>

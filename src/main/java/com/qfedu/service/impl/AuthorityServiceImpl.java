@@ -35,4 +35,20 @@ public class AuthorityServiceImpl implements AuthorityService {
 
         return map;
     }
+
+    @Override
+    public void addAuthority(Authority atr) {
+        authorityDao.addAuthority(atr);
+    }
+
+    @Override
+    public List<Authority> getParentroot() {
+        return authorityDao.getParentroot();
+    }
+
+    @Override
+    public void authoritydelete(Integer id) {
+        authorityDao.authoritydelete1(id);
+        authorityDao.authoritydelete2(id);
+    }
 }

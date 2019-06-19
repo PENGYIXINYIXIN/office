@@ -9,4 +9,12 @@ import java.util.List;
  */
 public interface AuthorityDao {
     List<Authority> selectAtrAll();
+
+    void addAuthority(Authority atr);
+
+    List<Authority> getParentroot();
+
+    void authoritydelete1(Integer id);
+
+    void authoritydelete2(Integer id);
 }
