@@ -13,4 +13,8 @@ public interface DepartDao {
     List<Depart> findByPage();
 
     void add(Depart depart);
+
+    void updateDepart(Depart depart);
+
+    void deleteById(Integer id);
 }

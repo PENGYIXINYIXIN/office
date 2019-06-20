@@ -15,4 +15,8 @@ public interface DepartService {
     Map<String, Object> findByPage(Integer page, Integer limit);
 
     void addepart(Depart depart);
+
+    void updateDpart(Depart depart);
+
+    void deleteById(Integer id);
 }

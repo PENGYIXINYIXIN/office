@@ -42,18 +42,21 @@
 		        var data = obj.data;
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除部门?', function(index){
-		                $.ajax({
+
+						obj.del();//删除表格中的对应行数据
+						layer.close(index);
+						$.ajax({
 		                    url: "departdelete.do",
 		                    type: "POST",
 		                    data:"id="+data.id,
 		                    success: function(data){
-		                        if(data.code==1000){
-		                            obj.del();//删除表格中的对应行数据
-		                            layer.close(index);
-		                            layer.msg("删除成功", {icon: 6});
+		                        if(data.code==1){
+									layer.msg("删除成功", {icon: 6});
+									window.location.href="departlist.html"
 		                        }else{
-		                            layer.msg("删除失败", {icon: 5});
-		                        }
+									layer.msg("删除失败", {icon: 5});
+
+								}
 		                    }
 		                });
 		            });
@@ -62,7 +65,6 @@
 		        }
 		});
 	});
-
 </script>
 </body>
 </html>

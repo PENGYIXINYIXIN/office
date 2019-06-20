@@ -49,4 +49,14 @@ public class DepartServiceImpl implements DepartService {
     public void addepart(Depart depart) {
         departDao.add(depart);
     }
+
+    @Override
+    public void updateDpart(Depart depart) {
+        departDao.updateDepart(depart);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        departDao.deleteById(id);
+    }
 }

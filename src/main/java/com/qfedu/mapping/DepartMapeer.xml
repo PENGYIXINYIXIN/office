@@ -23,4 +23,12 @@
     <insert id="add" parameterType="com.qfedu.pojo.Depart">
         INSERT  into t_depart (name,createtime) VALUES (#{name},#{createtime})
     </insert>
+    
+    <update id="updateDepart" parameterType="com.qfedu.pojo.Depart">
+        UPDATE  t_depart set name =#{name}, createtime = #{createtime} where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        DELETE  from t_depart where id = #{id}
+    </delete>
 </mapper>
