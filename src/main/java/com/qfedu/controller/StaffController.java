@@ -3,12 +3,14 @@ package com.qfedu.controller;
 import com.qfedu.dao.StaffDao;
 import com.qfedu.pojo.Staff;
 import com.qfedu.service.StaffService;
+import com.qfedu.utils.UploadUtils;
 import com.qfedu.vo.JsonBean;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -47,8 +49,19 @@ public class StaffController {
 
     @RequestMapping("staffadd.do")
     public String addStaff(Staff staff){
-        System.out.println("进入1"+staff);
+        staffService.addStaff(staff);
         return  "redirect:/stafflist.html";
     }
+    @RequestMapping("/photoupload.do")
+    @ResponseBody
+    public JsonBean uploadPhoto(MultipartFile file ){
+
+        UploadUtils upload = new UploadUtils();
+        String path = upload.getPath();
+        String s = upload.upload(file); //
+        String msg = path+"/"+s;
+        return new JsonBean(1000,msg);
+    }
+
 
 }

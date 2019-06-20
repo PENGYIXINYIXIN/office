@@ -14,4 +14,6 @@ public  interface  StaffService {
     public Map<String,Object> findByPage(Integer page, Integer limit);
 
     void deleteById(String id);
+
+    void addStaff(Staff staff);
 }

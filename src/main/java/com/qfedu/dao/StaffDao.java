@@ -13,4 +13,6 @@ public interface StaffDao {
     List<Staff> findAllStaffByPage();
 
     void deleteById(String  id);
+
+    void addStaff(Staff staff);
 }

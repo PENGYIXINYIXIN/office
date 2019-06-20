@@ -15,7 +15,7 @@ public class Staff {
     private  String email;
     private  String  qq;
     private  String phone;
-    private  Date createdate;
+    private  String createdate;
     private  String photo;
 
     public String getNo() {
@@ -82,11 +82,11 @@ public class Staff {
         this.phone = phone;
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 

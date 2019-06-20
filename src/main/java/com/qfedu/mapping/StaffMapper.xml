@@ -26,4 +26,7 @@
     <delete id="deleteById" parameterType="String">
         DELETE  from t_staff where no =#{no}
     </delete>
+    <insert id="addStaff" parameterType="com.qfedu.pojo.Staff">
+        INSERT into t_staff VALUES (#{no},#{name},#{did},#{flag},#{sex},#{email},#{qq},#{phone},#{createdate},#{photo})
+    </insert>
 </mapper>
