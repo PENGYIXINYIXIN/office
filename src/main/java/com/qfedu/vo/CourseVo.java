@@ -6,16 +6,13 @@ import com.qfedu.pojo.Course;
  * Created by PENGYIXIN on 2019/6/19.
  */
 public class CourseVo extends Course {
-    private String name;
+    private String typename;
 
-    @Override
-    public String getName() {
-        return name;
+    public String getTypename() {
+        return typename;
     }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setTypename(String typename) {
+        this.typename = typename;
     }
-
 }

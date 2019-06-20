@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.DepartDao">
+    <resultMap id="departMap" type="com.qfedu.vo.DepartVo">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="flag" column="flag"></result>
+        <result property="count" column="count"></result>
+    </resultMap>
+
+    <select id="findDepart" resultMap="departMap">
+        SELECT * from t_depart
+    </select>
+    
+    <select id="findByPage" resultMap="departMap">
+          select t_depart.*, count(t_staff.no) as count
+          from t_depart
+          LEFT JOIN t_staff on t_depart.id = t_staff.did
+          GROUP BY t_depart.name
+    </select>
+
+    <insert id="add" parameterType="com.qfedu.pojo.Depart">
+        INSERT  into t_depart (name,createtime) VALUES (#{name},#{createtime})
+    </insert>
+</mapper>

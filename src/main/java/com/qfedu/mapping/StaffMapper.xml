@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.qfedu.dao.StaffDao">
-    <resultMap id="staffMap" type="com.qfedu.pojo.Staff">
+    <resultMap id="staffMap" type="com.qfedu.vo.StaffVo">
         <id property="no" column="no"></id>
         <result property="name" column="name"></result>
         <result property="did" column="did"></result>
@@ -13,8 +13,17 @@
         <result property="phone" column="phone"></result>
         <result property="createdate" column="createdate"></result>
         <result property="photo" column="photo"></result>
+        <result property="dname" column="dname"></result>
     </resultMap>
     <select id="findAllStaff" resultMap="staffMap">
         SELECT * from t_staff
     </select>
+
+    <select id="findAllStaffByPage" resultMap="staffMap">
+        SELECT s.*, d.name as dname  from t_staff s LEFT JOIN t_depart d on s.did = d.id
+     </select>
+    
+    <delete id="deleteById" parameterType="String">
+        DELETE  from t_staff where no =#{no}
+    </delete>
 </mapper>

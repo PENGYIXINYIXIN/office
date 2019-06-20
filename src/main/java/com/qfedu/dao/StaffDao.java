@@ -9,4 +9,8 @@ import java.util.List;
  */
 public interface StaffDao {
     public List<Staff> findAllStaff();
+
+    List<Staff> findAllStaffByPage();
+
+    void deleteById(String  id);
 }
