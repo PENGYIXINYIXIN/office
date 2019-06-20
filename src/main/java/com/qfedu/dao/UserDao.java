@@ -27,4 +27,10 @@ public interface UserDao {
     void deleteUser(Integer id);
 
     void deleteUserRole(Integer id);
+
+    String selectUserName(String startno);
+
+    List<User> selectDepart();
+
+    Integer findUserId(String startno);
 }

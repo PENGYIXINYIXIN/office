@@ -32,7 +32,9 @@
 		</collection>
 
 	</resultMap>
-
+  <select id="selectUserName" parameterType="String" resultType="String">
+	  select name from t_user where no=#{no}
+  </select>
 
 	<delete id="deleteUser" parameterType="Integer">
 		delete from t_user where id=#{id}
@@ -78,5 +80,11 @@
 	<select id="findMenu" parameterType="String" resultMap="menuMap">
 		select a.aicon,a.id,a.aurl,a.title,c.aicon caicon,c.id cid,c.aurl caurl,c.title ctitle from t_authority a inner join t_authority c on a.id=c
 .parentId inner join t_roleauthority ra on a.id=ra.aid inner join t_role r on ra.rid=r.id inner join t_userrole ur on r.id=ur.rid inner join t_user u on u.id=ur.uid where u.no=#{no};
+	</select>
+	<select id="selectDepart" resultType="com.qfedu.pojo.User">
+		SELECT id,name from t_user where flag=1
+	</select>
+	<select id="findUserId" parameterType="String" resultType="Integer">
+		select id from t_user where no=#{startno}
 	</select>
 </mapper>
