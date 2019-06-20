@@ -74,7 +74,7 @@ public class UserController {
         return map;
     }
     @ResponseBody
-    @RequestMapping("/departall.do")
+    @RequestMapping("/liderall.do")
     public List<User> selectDepart(){
         List<User> list= userService.selectDepart();
 
