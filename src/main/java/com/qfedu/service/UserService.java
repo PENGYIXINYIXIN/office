@@ -20,4 +20,10 @@ public interface UserService {
     Map findMapByUser(Integer page, Integer limit, User user);
 
     void deleteUser(Integer id);
+
+    String selectUserName(String startno);
+
+    List<User> selectDepart();
+
+    Integer findUserId(String startno);
 }

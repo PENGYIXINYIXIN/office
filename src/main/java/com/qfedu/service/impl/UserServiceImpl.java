@@ -65,4 +65,19 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUser(id);
         userDao.deleteUserRole(id);
     }
+
+    @Override
+    public String selectUserName(String startno) {
+        return userDao.selectUserName(startno);
+    }
+
+    @Override
+    public List<User> selectDepart() {
+        return userDao.selectDepart();
+    }
+
+    @Override
+    public Integer findUserId(String startno) {
+        return userDao.findUserId(startno);
+    }
 }

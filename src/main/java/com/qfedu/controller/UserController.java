@@ -73,4 +73,11 @@ public class UserController {
         map.put("code",1);
         return map;
     }
+    @ResponseBody
+    @RequestMapping("/departall.do")
+    public List<User> selectDepart(){
+        List<User> list= userService.selectDepart();
+
+        return list;
+    }
 }
