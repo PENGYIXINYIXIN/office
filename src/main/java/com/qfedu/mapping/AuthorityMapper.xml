@@ -21,4 +21,20 @@
 	<delete id="authoritydelete2" parameterType="Integer">
 		delete from t_roleauthority where aid=#{id}
 	</delete>
+	<select id="findAuth" resultType="com.qfedu.pojo.Authority">
+       SELECT id,title from t_authority where parentId=0
+	</select>
+	<select id="findRids" parameterType="Integer" resultType="String">
+		SELECT au.id from t_authority au
+		inner join t_roleauthority ra
+		on au.id=ra.aid
+		where ra.rid=#{id}
+		and au.parentId=0
+	</select>
+	<delete id="deleteRoleAuth" parameterType="String">
+		delete from t_roleauthority where rid=#{id}
+	</delete>
+	<insert id="insertAuth" parameterType="java.util.Map">
+		INSERT into t_roleauthority VALUES (#{rid},#{aid})
+	</insert>
 </mapper>

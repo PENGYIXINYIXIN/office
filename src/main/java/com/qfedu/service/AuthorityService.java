@@ -16,4 +16,12 @@ public interface AuthorityService {
     List<Authority> getParentroot();
 
     void authoritydelete(Integer id);
+
+    List<Authority> findAuth();
+
+    List<String> findRids(Integer id);
+
+    void deleteRoleAuth(String id);
+
+    void insertAuth(Map map);
 }

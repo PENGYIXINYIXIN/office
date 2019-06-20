@@ -51,4 +51,24 @@ public class AuthorityServiceImpl implements AuthorityService {
         authorityDao.authoritydelete1(id);
         authorityDao.authoritydelete2(id);
     }
+
+    @Override
+    public List<Authority> findAuth() {
+        return authorityDao.findAuth();
+    }
+
+    @Override
+    public List<String> findRids(Integer id) {
+        return authorityDao.findRids(id);
+    }
+
+    @Override
+    public void deleteRoleAuth(String id) {
+        authorityDao.deleteRoleAuth(id);
+    }
+
+    @Override
+    public void insertAuth(Map map) {
+        authorityDao.insertAuth(map);
+    }
 }

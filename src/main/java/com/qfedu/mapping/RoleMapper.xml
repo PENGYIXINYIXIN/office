@@ -5,7 +5,7 @@
 <mapper namespace="com.qfedu.dao.RoleDao">
 
 <select id="findRole" resultType="com.qfedu.pojo.Role">
-	select id,info from t_role
+	select id,info,name from t_role
 </select>
 	<select id="findRids" parameterType="Integer" resultType="String">
 		select ur.rid from t_user u inner join t_userrole ur on u.id=ur.uid where u.id=#{id}
@@ -18,4 +18,19 @@
 	<insert id="insertRole" parameterType="java.util.Map">
 		INSERT into t_userrole VALUES (#{uid},#{rid})
 	</insert>
+	<select id="findRoleByRole" parameterType="com.qfedu.pojo.Role" resultType="com.qfedu.pojo.Role">
+		select id,info,name from t_role where 1=1
+		<if test="name!=null and name!=''">
+			and name =#{name}
+		</if>
+	</select>
+	<delete id="deleteRoleAuth1" parameterType="Integer">
+		DELETE from t_role where id =#{id}
+	</delete>
+	<delete id="deleteRoleAuth2" parameterType="Integer">
+		DELETE FROM t_userrole where rid=#{id}
+	</delete>
+	<delete id="deleteRoleAuth3" parameterType="Integer">
+		DELETE FROM t_roleauthority where rid=#{id}
+	</delete>
 </mapper>

@@ -16,4 +16,12 @@ public interface RoleDao {
     void deleteRole(String id);
 
     void insertRole(Map map);
+
+    List<Role> findRoleByRole(Role role);
+
+    void deleteRoleAuth1(Integer id);
+
+    void deleteRoleAuth2(Integer id);
+
+    void deleteRoleAuth3(Integer id);
 }

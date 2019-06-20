@@ -5,6 +5,7 @@ import com.qfedu.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -51,5 +52,26 @@ public class RoleController {
         Map mmp=new HashMap();
         mmp.put("code",1);
         return mmp;
+    }
+    @ResponseBody
+    @RequestMapping("/rolepage.do")
+    public Map<String, Object> getRole(Role role,Integer page,Integer limit){
+
+            System.out.println("++++++++++++++"+role);
+            Map map=new HashMap();
+            if(role==null){
+                map=roleService.getRoleAll(page,limit);
+            }else {
+                map=roleService.getRoleByUser(page,limit,role);
+            }
+
+            return map;
+    }
+    @RequestMapping("/roleAuthdel.do")
+    public Map userdel(Integer id){
+        roleService.deleteRoleAuth(id);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",1);
+        return map;
     }
 }

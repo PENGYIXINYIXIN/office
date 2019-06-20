@@ -16,4 +16,10 @@ public interface RoleService {
     void deleteRole(String id);
 
     void insertRole(Map map);
+
+    Map<String,Object> getRoleAll(Integer page,Integer limit);
+
+    Map getRoleByUser(Integer page, Integer limit, Role role);
+
+    void deleteRoleAuth(Integer id);
 }
