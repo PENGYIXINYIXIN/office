@@ -15,4 +15,6 @@ public interface StaffDao {
     void deleteById(String  id);
 
     void addStaff(Staff staff);
+
+    void addStaffList(List<Staff> studentsList);
 }

@@ -52,4 +52,9 @@ public class StaffServiceImpl implements StaffService {
     public void addStaff(Staff staff) {
         staffDao.addStaff(staff);
     }
+
+    @Override
+    public void addStaffList(List<Staff> studentsList) {
+        staffDao.addStaffList(studentsList);
+    }
 }
